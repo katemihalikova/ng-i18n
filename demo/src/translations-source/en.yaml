@@ -1,0 +1,56 @@
+SIMPLE: Underground station is around the corner.
+
+NESTED:
+  SHALLOW: Shallow translation
+  VERY:
+    VERY:
+      DEEP: Very very deep translation
+
+EN_ONLY: English only
+EN_CS_ONLY: English and Czech only
+EN_JA_ONLY: English and Japanese only
+
+VARIABLE: The {color} colour is marvellous.
+SELECT: >
+  There is {thing, select,
+    pc {a computer}
+    dog {an animal}
+    other {something unidentified}
+    undefined {nothing}
+  } in the flat.
+PLURAL: >
+  There {nr, plural,
+    =0 {is nothing}
+    one {is a box}
+    other {are # boxes}
+  } in the lift.
+PLURAL_OFFSET: >
+  You {nr, plural, offset:1
+    =0 {did not like}
+    =1 {liked}
+    one {and one other person liked}
+    other {and # others liked}
+  } this.
+SELECTORDINAL: >
+  This is the {nr, selectordinal,
+    one{#st}
+    two{#nd}
+    few{#rd}
+    other{#th}
+  } postbox.
+NESTED_FORMAT: >
+  {var1, select,
+    other {
+      {var2, plural,
+        other {
+          {var3, select,
+            other {Something else.}
+          }
+        }
+      }
+    }
+  }
+TODAY_IS: Today is {day}.
+
+DEMO:
+  USING_LOCALES: "(using {count, plural, one {locale} other {locales}}: {locales})"

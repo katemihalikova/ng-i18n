@@ -1,0 +1,255 @@
+<p>This module includes formatting pipes for Temporal API. Each pipe accepts different Temporal objects based on their intended usage.</p>
+
+<h3>Pipes Demo Table</h3>
+<p>Table lists all supported pipes and their possible input Temporal type. The last column shows the output of the particular pipe applied to a Temporal object. You can change format to see different outputs. To change value of used Temporal objects, see below the table.</p>
+
+<table class="structured">
+  <thead>
+    <tr>
+      <th style="width: min-content;">Pipe</th>
+      <th style="width: min-content;">Temporal Object</th>
+      <th style="width: min-content;">Format</th>
+      <th style="width: 50%;">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td colspan="4" class="spacer" aria-hidden="true"></td></tr>
+
+    <tr>
+      <td rowspan="2"><code>izDate</code></td>
+      <td><code>Temporal.PlainDate</code></td>
+      <td rowspan="5"><iz-format-select [(model)]="izDateFormat"></iz-format-select></td>
+      <td>{{plainDate | izDate: izDateFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.PlainDateTime</code></td>
+      <td>{{plainDateTime | izDate: izDateFormat}}</td>
+    </tr>
+
+    <tr>
+      <td><code>izZonedDate</code></td>
+      <td><code>Temporal.ZonedDateTime</code></td>
+      <td>{{zonedDateTime | izZonedDate: izDateFormat}}</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2"><code>izLocalDate</code></td>
+      <td><code>Temporal.ZonedDateTime</code></td>
+      <td>{{zonedDateTime | izLocalDate: izDateFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.Instant</code></td>
+      <td>{{instant | izLocalDate: izDateFormat}}</td>
+    </tr>
+
+    <tr><td colspan="4" class="spacer" aria-hidden="true"></td></tr>
+
+    <tr>
+      <td rowspan="2"><code>izTime</code></td>
+      <td><code>Temporal.PlainTime</code></td>
+      <td rowspan="2"><iz-format-select [(model)]="izTimeFormat" (modelChange)="izTimeFormatChanged()"></iz-format-select></td>
+      <td>{{plainTime | izTime: izTimeFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.PlainDateTime</code></td>
+      <td>{{plainDateTime | izTime: izTimeFormat}}</td>
+    </tr>
+
+    <tr>
+      <td><code>izZonedTime</code></td>
+      <td><code>Temporal.ZonedDateTime</code></td>
+      <td rowspan="3"><iz-zoned-format-select [(model)]="izTimeZonedFormat" (modelChange)="izTimeZonedFormatChanged()"></iz-zoned-format-select></td>
+      <td>{{zonedDateTime | izZonedTime: izTimeZonedFormat}}</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2"><code>izLocalTime</code></td>
+      <td><code>Temporal.ZonedDateTime</code></td>
+      <td>{{zonedDateTime | izLocalTime: izTimeZonedFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.Instant</code></td>
+      <td>{{instant | izLocalTime: izTimeZonedFormat}}</td>
+    </tr>
+
+    <tr><td colspan="4" class="spacer" aria-hidden="true"></td></tr>
+
+    <tr>
+      <td><code>izDateTime</code></td>
+      <td><code>Temporal.PlainDateTime</code></td>
+      <td><iz-format-select [(model)]="izDateTimeFormat" (modelChange)="izDateTimeFormatChanged()"></iz-format-select></td>
+      <td>{{plainDateTime | izDateTime: izDateTimeFormat}}</td>
+    </tr>
+
+    <tr>
+      <td><code>izZonedDateTime</code></td>
+      <td><code>Temporal.ZonedDateTime</code></td>
+      <td rowspan="3"><iz-zoned-format-select [(model)]="izDateTimeZonedFormat" (modelChange)="izDateTimeZonedFormatChanged()"></iz-zoned-format-select></td>
+      <td>{{zonedDateTime | izZonedDateTime: izDateTimeZonedFormat}}</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2"><code>izLocalDateTime</code></td>
+      <td><code>Temporal.ZonedDateTime</code></td>
+      <td>{{zonedDateTime | izLocalDateTime: izDateTimeZonedFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.Instant</code></td>
+      <td>{{instant | izLocalDateTime: izDateTimeZonedFormat}}</td>
+    </tr>
+
+    <tr><td colspan="4" class="spacer" aria-hidden="true"></td></tr>
+
+    <tr>
+      <td rowspan="3"><code>izYearMonth</code></td>
+      <td><code>Temporal.PlainMonthDay</code></td>
+      <td rowspan="3"><iz-format-select [(model)]="izYearMonthFormat"></iz-format-select></td>
+      <td>{{plainYearMonth | izYearMonth: izYearMonthFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.PlainDate</code></td>
+      <td>{{plainDate | izYearMonth: izYearMonthFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.PlainDateTime</code></td>
+      <td>{{plainDateTime | izYearMonth: izYearMonthFormat}}</td>
+    </tr>
+
+    <tr><td colspan="4" class="spacer" aria-hidden="true"></td></tr>
+
+    <tr>
+      <td rowspan="3"><code>izMonthDay</code></td>
+      <td><code>Temporal.PlainMonthDay</code></td>
+      <td rowspan="3"><iz-format-select [(model)]="izMonthDayFormat"></iz-format-select></td>
+      <td>{{plainMonthDay | izMonthDay: izMonthDayFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.PlainDate</code></td>
+      <td>{{plainDate | izMonthDay: izMonthDayFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.PlainDateTime</code></td>
+      <td>{{plainDateTime | izMonthDay: izMonthDayFormat}}</td>
+    </tr>
+
+    <tr><td colspan="4" class="spacer" aria-hidden="true"></td></tr>
+
+    <tr>
+      <td rowspan="2"><code>izWeekday</code></td>
+      <td><code>Temporal.PlainDate</code></td>
+      <td rowspan="2"><iz-format-select [(model)]="izWeekdayFormat"></iz-format-select></td>
+      <td>{{plainDate | izWeekday: izWeekdayFormat}}</td>
+    </tr>
+    <tr>
+      <td><code>Temporal.PlainDateTime</code></td>
+      <td>{{plainDateTime | izWeekday: izWeekdayFormat}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Temporal Object Values</h3>
+<p>Here, you can change values of Temporal objects used in the demo table above.</p>
+
+<table class="structured">
+  <tbody>
+    <tr>
+      <th><code>Temporal.PlainDate</code></th>
+      <td>
+        <input type="date" [(ngModel)]="plainDateModel" (ngModelChange)="plainDateModelChanged()" min="0001-01-01" max="9999-12-31">
+        <ng-container *ngIf="plainDateError">
+          <br>{{plainDateError}}
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th><code>Temporal.PlainTime</code></th>
+      <td>
+        <input type="time" [(ngModel)]="plainTimeModel" (ngModelChange)="plainTimeModelChanged()">
+        <ng-container *ngIf="plainTimeError">
+          <br>{{plainTimeError}}
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th><code>Temporal.PlainDateTime</code></th>
+      <td>
+        <input type="datetime-local" [(ngModel)]="plainDateTimeModel" (ngModelChange)="plainDateTimeModelChanged()" min="0001-01-01" max="9999-12-31T23:59:59">
+        <ng-container *ngIf="plainDateTimeError">
+          <br>{{plainDateTimeError}}
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th><code>Temporal.ZonedDateTime</code></th>
+      <td>
+        <input type="datetime-local" [(ngModel)]="zonedDateTimeModel" (ngModelChange)="zonedDateTimeModelChanged()" min="0001-01-01" max="9999-12-31T23:59:59">{{' '}}
+        <iz-time-zone-select [(model)]="zonedDateTimeModelTimeZone" (ngModelChange)="zonedDateTimeModelChanged()"></iz-time-zone-select>
+        <ng-container *ngIf="zonedDateTimeError">
+          <br>{{zonedDateTimeError}}
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th><code>Temporal.Instant</code></th>
+      <td>
+        <input type="datetime-local" [(ngModel)]="instantModel" (ngModelChange)="instantModelChanged()" min="0001-01-01" max="9999-12-31T23:59:59"> UTC
+        <ng-container *ngIf="instantError">
+          <br>{{instantError}}
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th><code>Temporal.PlainYearMonth</code></th>
+      <td>
+        <input type="month" [(ngModel)]="plainYearMonthModel" (ngModelChange)="plainYearMonthModelChanged()" min="0001-01" max="9999-12">
+        <ng-container *ngIf="plainYearMonthError">
+          <br>{{plainYearMonthError}}
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th><code>Temporal.PlainMonthDay</code></th>
+      <td>
+        <select [(ngModel)]="plainMonthDayModelMonth" (ngModelChange)="plainMonthDayModelChanged()">
+          <option *ngFor="let m of months" [value]="m.value">{{m.label}}</option>
+        </select>{{' '}}
+        <select [(ngModel)]="plainMonthDayModelDay" (ngModelChange)="plainMonthDayModelChanged()">
+          <option>01</option>
+          <option>02</option>
+          <option>03</option>
+          <option>04</option>
+          <option>05</option>
+          <option>06</option>
+          <option>07</option>
+          <option>08</option>
+          <option>09</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+          <option>13</option>
+          <option>14</option>
+          <option>15</option>
+          <option>16</option>
+          <option>17</option>
+          <option>18</option>
+          <option>19</option>
+          <option>10</option>
+          <option>21</option>
+          <option>22</option>
+          <option>23</option>
+          <option>24</option>
+          <option>25</option>
+          <option>26</option>
+          <option>27</option>
+          <option>28</option>
+          <option>29</option>
+          <option>30</option>
+          <option>31</option>
+        </select>
+        <ng-container *ngIf="plainMonthDayError">
+          <br>{{plainMonthDayError}}
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>

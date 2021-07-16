@@ -1,0 +1,23 @@
+{
+  "name": "ization Documentation",
+  "tsconfig": "tsconfig.typedoc.json",
+  "entryPoints": [
+    "packages/core/src/public-api.ts",
+    "packages/translate/src/public-api.ts",
+    "packages/temporal/src/public-api.ts",
+    "packages/moment/src/public-api.ts"
+  ],
+  "includes": "packages/",
+  "out": "dist/docs",
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "categoryOrder": [
+    "Angular Module",
+    "Pipes",
+    "Services",
+    "Injection Tokens",
+    "*",
+    "Other"
+  ],
+  "categorizeByGroup": false
+}

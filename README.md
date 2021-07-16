@@ -1,27 +1,43 @@
-# NgI18n
+# ization
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+> Internationalization system for Angular
 
-## Development server
+## Installation And Usage
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+See Readme files of each package:
 
-## Code scaffolding
+* [`@ization/core`](packages/core/README.md)
+* [`@ization/translate`](packages/translate/README.md)
+* [`@ization/temporal`](packages/temporal/README.md)
+* [`@ization/moment`](packages/moment/README.md)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Demo And Documentation
 
-## Build
+Both [Demo](https://demo.ization.dev/) and [Docs](https://docs.ization.dev/) are available online.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Development
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Build packages
 
-## Running end-to-end tests
+Run `npm run build` to build all package into the `dist/*/` directory.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Build demo
 
-## Further help
+Run `npm run build:demo` to build demo into the `dist/demo/` directory.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Serve demo
+
+Run `npm start` to serve demo and watch for changes in both demo and packages.
+
+### Build docs
+
+Run `npm run docs` to build demo into the `dist/docs/` directory.
+
+### Unit tests
+
+Run `npm run test` to execute unit tests of all packages.
+
+### Linter
+
+Run `npm run lint` to run linter on all code, including spec files, of all packages and demo.

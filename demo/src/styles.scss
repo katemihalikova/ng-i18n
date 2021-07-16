@@ -1,0 +1,84 @@
+@use './variables' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+details {
+  margin-left: 1em;
+
+  summary {
+    margin-left: -1em;
+    cursor: pointer;
+
+    > * {
+      display: inline;
+    }
+  }
+
+  position: relative;
+  &::after {
+    display: block;
+    content: "";
+
+    position: absolute;
+    top: 2.5em;
+    left: -.7em;
+    bottom: .3em;
+    width: 1px;
+
+    background-color: #ddd;
+
+    details & {
+      top: 2em;
+    }
+  }
+}
+
+*::marker {
+  color: $ization-color;
+
+  [open] > & {
+    color: $ization-alt-color;
+  }
+}
+
+table.structured {
+  width: 100%;
+  margin-bottom: 1em;
+  text-align: center;
+  border-collapse: collapse;
+
+  th, td {
+    border: 1px solid $ization-color;
+    padding: .2em .5em;
+  }
+
+  th {
+    color: #fff;
+    background-color: $ization-color;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  .spacer {
+    border-left: none;
+    border-right: none;
+    border: none;
+  }
+}

@@ -1,0 +1,9 @@
+<select [ngModel]="model" (ngModelChange)="updateModel($event)">
+  <option [value]="undefined">default</option>
+  <option>short</option>
+  <option>medium</option>
+  <option>long</option>
+  <option>zonedShort</option>
+  <option>zonedMedium</option>
+  <option>zonedLong</option>
+</select>

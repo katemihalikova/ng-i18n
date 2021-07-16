@@ -1,0 +1,10 @@
+<ng-container *ngIf="definition">
+  <em>{{definition.localeCode}}</em>
+  <ng-container *ngIf="hasSomeOverride(definition)">
+    + overrides:
+    <ng-container *ngFor="let override of getOverrides(definition); let i = index">
+      <ng-container *ngIf="i > 0">, </ng-container>
+      <code>{{override.plugin}}</code> – <em>{{override.code}}</em>
+    </ng-container>
+  </ng-container>
+</ng-container>

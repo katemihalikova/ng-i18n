@@ -1,0 +1,5 @@
+.tsd-kind-constructor .tsd-type-parameters-title,
+.tsd-kind-constructor .tsd-type-parameters,
+.tsd-kind-constructor .tsd-returns-title {
+  display: none;
+}

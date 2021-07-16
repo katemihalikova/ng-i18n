@@ -1,0 +1,49 @@
+SIMPLE: Stanice metra je za rohem.
+
+NESTED:
+  SHALLOW: Mělký překlad
+  VERY:
+    VERY:
+      DEEP: Velmi velmi hluboký překlad
+
+CS_ONLY: pouze čeština
+EN_CS_ONLY: pouze angličtina a čeština
+CS_JA_ONLY: pouze čeština a japonština
+
+VARIABLE: Barva "{color}" je úžasná.
+SELECT: >
+  V bytě {thing, select,
+    pc {je počítač}
+    dog {je zvíře}
+    other {je něco neznámého}
+    undefined {není nic}
+  }.
+PLURAL: >
+  Ve výtahu {nr, plural,
+    =0 {není nic}
+    one {je krabice}
+    few {jsou # krabice}
+    other {je # krabic}
+  }.
+PLURAL_OFFSET: >
+  {nr, plural, offset:1
+    =0 {Nelajknul jsi to}
+    =1 {Lajknul jsi to}
+    one {Ty a jeden další člověk jste to lajkli}
+    few {Ty a # další lidé jste to lajkli}
+    other {Ty a # dalších lidí jste to lajkli}
+  }.
+SELECTORDINAL: Tohle je {nr}. poštovní schránka.
+NESTED_FORMAT: >
+  {var1, select,
+    other {
+      {var2, plural,
+        other {
+          {var3, select,
+            other {Něco jiného.}
+          }
+        }
+      }
+    }
+  }
+TODAY_IS: Dnes je {day}.

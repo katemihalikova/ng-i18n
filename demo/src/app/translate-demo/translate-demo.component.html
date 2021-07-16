@@ -1,0 +1,114 @@
+<p>This module includes a pipe for translating. It runs ICU MessageFormat under the hood so formatters can be used as well. It loads a predefined number of the most preferred locales and then also a fallback one. If a translation is not found in the most preferred locale, it checks the next preferred locale, all the way down to the fallback locale. Because of that, the fallback locale should contain all translations. This demo compiles all translations during build and then loads them lazily during runtime. The module is configured to load just 1 locale (the most preferred one) + fallback locale.</p>
+
+<h3>Basic Translations</h3>
+<p>Translations are saved using translation key. When a translation is requested, a lookup is done to find the correct string. Translations can be stored hierarchically, for example per module and then per page. Accessing nested translations is done using dot notation.</p>
+<p>When a translation is not found in any used locale, empty string is used and a warning is printed to browser console.</p>
+
+<table class="structured">
+  <thead>
+    <tr>
+      <th>Translation Key</th>
+      <th>Result <span *ngIf="getActiveLocales() as locales">{{'DEMO.USING_LOCALES' | izTranslate: {count: locales.length, locales: locales.join(', ')} }}</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let t of translations">
+      <tr *ngIf="!t.skipSpacer"><td colspan="3" class="spacer" aria-hidden="true"></td></tr>
+
+      <tr>
+        <td><code>'{{t.key}}'</code></td>
+        <td>{{t.key | izTranslate}}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<h3>Translations With Parameters</h3>
+<p>Translations can also accept parameters. These can be interpolated into the translation directly (variable) or can be used in a formatter. Built-in formatters <code>select</code>, <code>plural</code>, and <code>selectordinal</code> are supported. Custom formatters can also be used, see <a href="http://messageformat.github.io/messageformat/custom-formatters/" target="_blank" rel="noopener">MessageFormat docs</a> for more info.</p>
+
+<table class="structured">
+  <thead>
+    <tr>
+      <th>Translation Key</th>
+      <th>Params</th>
+      <th>Result <span *ngIf="getActiveLocales() as locales">{{'DEMO.USING_LOCALES' | izTranslate: {count: locales.length, locales: locales.join(', ')} }}</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let t of translationsWithParams">
+      <tr><td colspan="3" class="spacer" aria-hidden="true"></td></tr>
+
+      <tr *ngFor="let p of t.params; let i = index">
+        <td *ngIf="i === 0" [rowSpan]="t.params?.length || 1"><code>'{{t.key}}'</code></td>
+        <td><code style="text-align: left;">{{p | json}}</code></td>
+        <td>{{t.key | izTranslate: p}}</td>
+      </tr>
+    </ng-container>
+
+    <tr><td colspan="3" class="spacer" aria-hidden="true"></td></tr>
+
+    <tr>
+      <td><code>'TODAY_IS'</code></td>
+      <td><code style="text-align: left;">{{'{'}} day: (now | izWeekday: 'long') }</code></td>
+      <td>{{'TODAY_IS' | izTranslate: { day: (now | izWeekday: 'long') } }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3>Example YAML Translation File</h3>
+<p>This is one of the used YAML files that is compiled into a JS file during build time. You can see that part of the file is structured into multiple levels of hierarchy and that there are translations that use formatters.</p>
+
+<pre class="yaml"><code><span class="key">SIMPLE:</span> Underground station is around the corner.
+
+<span class="key">NESTED:</span>
+  <span class="key">SHALLOW:</span> Shallow translation
+  <span class="key">VERY:</span>
+    <span class="key">VERY:</span>
+      <span class="key">DEEP:</span> Very very deep translation
+
+<span class="key">EN_ONLY:</span> English only
+<span class="key">EN_CS_ONLY:</span> English and Czech only
+<span class="key">EN_JP_ONLY:</span> English and Japanese only
+
+<span class="key">VARIABLE:</span> The <span class="control">{{'{'}}<span class="var">color</span>}</span> colour is marvellous.
+<span class="key">SELECT:</span> >
+  There is <span class="control">{{'{'}}<span class="var">thing</span>, select,
+    pc {{'{'}}</span>a computer<span class="control">}
+    dog {{'{'}}</span>an animal<span class="control">}
+    other {{'{'}}</span>something unidentified<span class="control">}
+    undefined {{'{'}}</span>nothing<span class="control">}
+  }</span> in the flat.
+<span class="key">PLURAL:</span> >
+  There <span class="control">{{'{'}}<span class="var">nr</span>, plural,
+    =0 {{'{'}}</span>is nothing<span class="control">}
+    one {{'{'}}</span>is a box<span class="control">}
+    other {{'{'}}</span>are <span class="var">#</span> boxes<span class="control">}
+  }</span> in the lift.
+<span class="key">PLURAL_OFFSET:</span> >
+  You <span class="control">{{'{'}}<span class="var">nr</span>, plural, offset:1
+    =0 {{'{'}}</span>did not like<span class="control">}
+    =1 {{'{'}}</span>liked<span class="control">}
+    one {{'{'}}</span>and one other person liked<span class="control">}
+    other {{'{'}}</span>and <span class="var">#</span> others liked<span class="control">}
+  }</span> this.
+<span class="key">SELECTORDINAL:</span> >
+  This is the <span class="control">{{'{'}}<span class="var">nr</span>, selectordinal,
+    one {{'{'}}</span><span class="var">#</span>st<span class="control">}
+    two {{'{'}}</span><span class="var">#</span>nd<span class="control">}
+    few {{'{'}}</span><span class="var">#</span>rd<span class="control">}
+    other {{'{'}}</span><span class="var">#</span>th<span class="control">}
+  }</span> postbox.
+<span class="key">NESTED_FORMAT:</span> >
+  <span class="control">{{'{'}}<span class="var">var1</span>, select,
+    other {{'{'}}
+      {{'{'}}<span class="var">var2</span>, plural,
+        other {{'{'}}
+          {{'{'}}<span class="var">var3</span>, select,
+            other {{'{'}}</span>Something else.<span class="control">}
+          }
+        }
+      }
+    }
+  }</span>
+<span class="key">TODAY_IS:</span> Today is <span class="control">{{'{'}}<span class="var">day</span>}</span>.</code></pre>

@@ -4,29 +4,49 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "core": [
-        "dist/core/core",
-        "dist/core"
+      "@ization/core": [
+        "packages/core/src/__ide__public-api.ts"
+      ],
+      "@ization/moment": [
+        "packages/moment/src/public-api.ts"
+      ],
+      "@ization/temporal": [
+        "packages/temporal/src/public-api.ts"
+      ],
+      "@ization/translate": [
+        "packages/translate/src/public-api.ts"
       ]
     },
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
+
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "esModuleInterop": true,
     "target": "es2015",
     "module": "es2020",
     "lib": [
-      "es2018",
+      "es2020",
       "dom"
     ]
   },
+  "include": [
+    "demo/**/*.ts",
+    "packages/**/*.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

@@ -1,0 +1,50 @@
+SIMPLE: 地下鉄駅がすぐ近くにあります。
+
+NESTED:
+  SHALLOW: 浅い翻訳
+  VERY:
+    VERY:
+      DEEP: 非常に非常に深い翻訳
+
+JA_ONLY: 日本語のみ
+EN_JA_ONLY: 英語と日本語のみ
+CS_JA_ONLY: チェコ語と日本語のみ
+
+VARIABLE: 「{color}」の色は素晴らしいです。
+SELECT: >
+  アパートに{thing, select,
+    pc {パソコン}
+    dog {動物}
+    other {未知のこと}
+    undefined {何もない}
+  }があります。
+PLURAL: >
+  エレベーターに{nr, plural,
+    =0 {何もない}
+    =1 {箱}
+    other {#つの箱}
+  }があります。
+PLURAL_OFFSET: >
+  あなた{nr, plural, offset:1
+    =0 {はこれが好きではありませんでした}
+    =1 {はこれが好きだった}
+    other {と他の#人がこれを気に入りました}
+  }。
+SELECTORDINAL: >
+  これは{nr, selectordinal,
+    =1{最初}
+    other{#番目}
+  }のメールボックスです。
+NESTED_FORMAT: >
+  {var1, select,
+    other {
+      {var2, plural,
+        other {
+          {var3, select,
+            other {他の何か。}
+          }
+        }
+      }
+    }
+  }
+TODAY_IS: 今日は{day}です。

@@ -12,10 +12,22 @@
     },
     "array-type": false,
     "arrow-return-shorthand": true,
+    "component-selector": [
+      true,
+      "element",
+      "iz",
+      "kebab-case"
+    ],
     "curly": true,
     "deprecation": {
       "severity": "warning"
     },
+    "directive-selector": [
+      true,
+      "attribute",
+      "iz",
+      "camelCase"
+    ],
     "eofline": true,
     "import-blacklist": [
       true,
@@ -28,10 +40,7 @@
       ]
     },
     "max-classes-per-file": false,
-    "max-line-length": [
-      true,
-      140
-    ],
+    "max-line-length": false,
     "member-ordering": [
       true,
       {
@@ -57,6 +66,7 @@
       "ignore-params"
     ],
     "no-non-null-assertion": true,
+    "no-null-keyword": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
@@ -64,6 +74,7 @@
       true,
       "as-needed"
     ],
+    "prefer-const": false,
     "quotemark": [
       true,
       "single"

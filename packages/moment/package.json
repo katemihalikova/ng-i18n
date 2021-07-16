@@ -1,0 +1,13 @@
+{
+  "name": "@ization/moment",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": ">=11",
+    "@angular/core": ">=11",
+    "@ization/core": "1",
+    "moment": "^2.13.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

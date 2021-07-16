@@ -1,0 +1,20 @@
+@use '../../variables' as *;
+
+pre.yaml {
+  border: 1px solid $ization-color;
+  padding: .5em;
+
+  .key {
+    color: $ization-color;
+    font-style: italic;
+  }
+
+  .var {
+    color: $ization-alt-color;
+    font-weight: bold;
+  }
+
+  .control {
+    color: $ization-alt-color;
+  }
+}

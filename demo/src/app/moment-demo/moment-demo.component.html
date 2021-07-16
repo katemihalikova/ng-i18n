@@ -1,0 +1,64 @@
+<p>This module includes formatting pipes for any input supported by <code>moment.js</code>. Each pipe provides a different output based on its name and format, but can also accept arbitrary formatting tokens defined in <a href="https://momentjs.com/docs/#/displaying/format/" target="_blank" rel="noopener"><code>moment.js</code> documentation</a>.</p>
+
+<h3>Pipes Demo Table</h3>
+<p>Table lists all supported pipes. The last column shows the output of the particular pipe applied to a datetime ISO string. You can change format to see different outputs. To change value of the ISO string, see below the table.</p>
+
+<table class="structured">
+  <thead>
+    <tr>
+      <th style="width: min-content;">Pipe</th>
+      <th style="width: min-content;">Format</th>
+      <th style="width: 50%;">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td colspan="4" class="spacer" aria-hidden="true"></td></tr>
+
+    <tr>
+      <td><code>izDate</code></td>
+      <td><iz-format-select [(model)]="izMDateFormat"></iz-format-select></td>
+      <td>{{model | izMDate: izMDateFormat}}</td>
+    </tr>
+
+    <tr>
+      <td><code>izTime</code></td>
+      <td><iz-format-select [(model)]="izMTimeFormat"></iz-format-select></td>
+      <td>{{model | izMTime: izMTimeFormat}}</td>
+    </tr>
+
+    <tr>
+      <td><code>izDateTime</code></td>
+      <td><iz-format-select [(model)]="izMDateTimeFormat"></iz-format-select></td>
+      <td>{{model | izMDateTime: izMDateTimeFormat}}</td>
+    </tr>
+
+    <tr>
+      <td><code>izYearMonth</code></td>
+      <td><iz-format-select [(model)]="izMYearMonthFormat"></iz-format-select></td>
+      <td>{{model | izMYearMonth: izMYearMonthFormat}}</td>
+    </tr>
+
+    <tr>
+      <td><code>izWeekday</code></td>
+      <td><iz-format-select [(model)]="izMWeekdayFormat"></iz-format-select></td>
+      <td>{{model | izMWeekday: izMWeekdayFormat}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>ISO String Value</h3>
+<p>Here, you can change the value of underlying ISO datetime string used in the demo table above.</p>
+
+<table class="structured">
+  <tbody>
+    <tr>
+      <th>Date & Time</th>
+      <td>
+        <input type="datetime-local" [(ngModel)]="model" (ngModelChange)="modelChanged()" min="0001-01-01" max="9999-12-31T23:59:59">
+        <ng-container *ngIf="error">
+          <br>{{error}}
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>

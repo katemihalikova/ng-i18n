@@ -1,0 +1,34 @@
+<h3>Locales configured for this app in original order</h3>
+<p>This is a list of locales, including any overrides, that are supported by this demo.</p>
+<ul>
+  <li *ngFor="let definition of localeDefinitionsInOriginalOrder">
+    <iz-locale-definition [definition]="definition"></iz-locale-definition>
+  </li>
+</ul>
+
+<h3>Locales preferred by your browser</h3>
+<p>This is a list of locales that your browser says you prefer. You can change it in your browser settings.</p>
+<ul>
+  <li *ngFor="let code of localeCodesSupportedByBrowser">
+    <em>{{code}}</em>
+  </li>
+</ul>
+
+<h3>Locale picked by user to be preferred</h3>
+<p>User can pick one locale that is saved into <code>localStorage</code> and used as the most preferred one, usually used by your app as "Locale selector" feature.</p>
+<ul>
+  <li *ngIf="(localeCodePreferredByUser$ | async) || 'None' as locale">
+    <select [ngModel]="locale" (ngModelChange)="userPreferredLocaleChanged($event)">
+      <option>None</option>
+      <option *ngFor="let definition of localeDefinitionsInOriginalOrder">{{definition.localeCode}}</option>
+    </select>
+  </li>
+</ul>
+
+<h3>Locales sorted in order of preference</h3>
+<p>This is the list of locales in the final preference that is passed to plugins. It is sorted from the most preferred locales based on all data from above.</p>
+<ul>
+  <li *ngFor="let definition of localeDefinitionsInOrderOfPreference$ | async">
+    <iz-locale-definition [definition]="definition"></iz-locale-definition>
+  </li>
+</ul>

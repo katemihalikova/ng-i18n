@@ -1,0 +1,43 @@
+SIMPLE: Subway station is around the corner.
+
+VARIABLE: The {color} color is marvelous.
+SELECT: >
+  There is {thing, select,
+    pc {a computer}
+    dog {an animal}
+    other {something unidentified}
+    undefined {nothing}
+  } in the apartment.
+PLURAL: >
+  There {nr, plural,
+    =0 {is nothing}
+    one {is a box}
+    other {are # boxes}
+  } in the elevator.
+PLURAL_OFFSET: >
+  You {nr, plural, offset:1
+    =0 {did not like}
+    =1 {liked}
+    one {and one other person liked}
+    other {and # others liked}
+  } this.
+SELECTORDINAL: >
+  This is the {nr, selectordinal,
+    one{#st}
+    two{#nd}
+    few{#rd}
+    other{#th}
+  } mailbox.
+NESTED_FORMAT: >
+  {var1, select,
+    other {
+      {var2, plural,
+        other {
+          {var3, select,
+            other {Something else.}
+          }
+        }
+      }
+    }
+  }
+TODAY_IS: Today is {day}.

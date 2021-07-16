@@ -1,0 +1,11 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "include": [],
+  "files": [
+    "packages/core/src/public-api.ts",
+    "packages/moment/src/public-api.ts",
+    "packages/temporal/src/public-api.ts",
+    "packages/translate/src/public-api.ts"
+  ]
+}
